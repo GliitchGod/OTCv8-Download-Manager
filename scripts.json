@@ -1,0 +1,43 @@
+{
+    "_cache": {
+        "Combat": {
+            "Auto Attack": {
+                "url": "https://raw.githubusercontent.com/user/autoattack.lua",
+                "description": "Automatically attacks monsters",
+                "author": "YourName",
+                "enabled": false
+            },
+            "Auto Heal": {
+                "url": "https://raw.githubusercontent.com/user/autoheal.lua",
+                "description": "Automatically heals when low HP",
+                "author": "YourName",
+                "enabled": false
+            }
+        },
+        "Utility": {
+            "Auto Loot": {
+                "url": "https://raw.githubusercontent.com/user/autoloot.lua",
+                "description": "Automatically loots items",
+                "author": "YourName",
+                "enabled": false
+            }
+        },
+        "Automation": {
+            "Auto Train": {
+                "url": "https://raw.githubusercontent.com/user/autotrain.lua",
+                "description": "Automatically trains skills",
+                "author": "YourName",
+                "enabled": false
+            }
+        },
+        "PartyStuff": {
+            "Party Healer": {
+                "url": "https://raw.githubusercontent.com/user/partyhealer.lua",
+                "description": "Heals party members",
+                "author": "YourName",
+                "enabled": false
+            }
+        }
+    },
+    "actualVersion": "1.0"
+}
