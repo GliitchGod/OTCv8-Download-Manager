@@ -1,10 +1,10 @@
 {
     "_cache": {
         "Combat": {
-            "Auto Attack": {
-                "url": "https://raw.githubusercontent.com/user/autoattack.lua",
-                "description": "Automatically attacks monsters",
-                "author": "YourName",
+            "Auto Exeta": {
+                "url": "https://raw.githubusercontent.com/GliitchGod/OTCv8-Download-Manager/refs/heads/main/ExetaRes.lua",
+                "description": "Exeta res based on monster attacking you",
+                "author": "Kratos",
                 "enabled": false
             }
         },
@@ -35,3 +35,4 @@
     },
     "actualVersion": "1.0"
 }
+
