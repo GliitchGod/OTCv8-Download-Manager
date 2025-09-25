@@ -6,12 +6,6 @@
                 "description": "Automatically attacks monsters",
                 "author": "YourName",
                 "enabled": false
-            },
-            "Auto Heal": {
-                "url": "https://raw.githubusercontent.com/user/autoheal.lua",
-                "description": "Automatically heals when low HP",
-                "author": "YourName",
-                "enabled": false
             }
         },
         "Utility": {
