@@ -3,6 +3,7 @@
   If you want to support my work, feel free to donate at https://trainorcreations.com/donate
   PS. Stop ripping off my work and selling it as your own.
 ]]--
+local tabName = setDefaultTab('PT');
 local panelName = "autoParty"
 local autopartyui = setupUI([[
 Panel
