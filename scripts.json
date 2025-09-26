@@ -6,6 +6,12 @@
                 "description": "Exeta res based on monster attacking you",
                 "author": "Kratos",
                 "enabled": false
+            },
+              "Auto RP Shield": {
+                "url": "https://raw.githubusercontent.com/GliitchGod/OTCv8-Download-Manager/refs/heads/main/UtamoRP.lua",
+                "description": "Casts utamo on and off based of values",
+                "author": "Madicinal",
+                "enabled": false
             }
         },
         "Utility": {
@@ -17,22 +23,21 @@
             }
         },
         "Automation": {
-            "Auto Train": {
-                "url": "https://raw.githubusercontent.com/user/autotrain.lua",
-                "description": "Automatically trains skills",
-                "author": "YourName",
+            "Auto Pot": {
+                "url": "https://raw.githubusercontent.com/GliitchGod/OTCv8-Download-Manager/refs/heads/main/HealingPots.lua",
+                "description": "Adds Healing pots under HP tab",
+                "author": "Kratos",
                 "enabled": false
             }
         },
         "PartyStuff": {
-            "Party Healer": {
-                "url": "https://raw.githubusercontent.com/user/partyhealer.lua",
-                "description": "Heals party members",
-                "author": "YourName",
+            "Auto Party": {
+                "url": "https://raw.githubusercontent.com/GliitchGod/OTCv8-Download-Manager/refs/heads/main/AutoParty.lua",
+                "description": "automatically sets party invite and join",
+                "author": "Lee",
                 "enabled": false
             }
         }
     },
     "actualVersion": "1.0"
 }
-
