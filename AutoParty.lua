@@ -5,6 +5,7 @@
 ]]--
 local tabName = setDefaultTab('PT');
 local panelName = "autoParty"
+UI.Separator(tabName)
 local autopartyui = setupUI([[
 Panel
   height: 38
