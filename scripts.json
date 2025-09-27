@@ -15,10 +15,16 @@
             }
         },
         "Utility": {
-            "Auto Loot": {
-                "url": "https://raw.githubusercontent.com/user/autoloot.lua",
-                "description": "Automatically loots items",
-                "author": "YourName",
+            "Auto Magic Wall": {
+                "url": "https://raw.githubusercontent.com/GliitchGod/OTCv8-Download-Manager/refs/heads/main/MagicWall.lua",
+                "description": "Mark tile with f11 to auto cast mwall",
+                "author": "Astro",
+                "enabled": false
+            },
+            "Auto Wild Growth": {
+                "url": "https://raw.githubusercontent.com/GliitchGod/OTCv8-Download-Manager/refs/heads/main/WildGrowth.lua",
+                "description": "Mark tile with f12 to auto cast wild growth",
+                "author": "Astro",
                 "enabled": false
             }
         },
