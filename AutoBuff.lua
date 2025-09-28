@@ -24,7 +24,8 @@ onTalk(function(name, level, mode, text, channelId, pos)
     local buffSetup = storage.buffConfig:split(',');
     local textBuff = buffSetup[2] and buffSetup[2]:trim() or buffSetup[1]:trim();
     if text:lower():trim() == textBuff then
-        storage.buffCDW = os.time() + tonumber(buffSetup[3]);
+        local cooldown = tonumber(buffSetup[3]) or 5
+        storage.buffCDW = os.time() + cooldown;
     end
 end);
 
