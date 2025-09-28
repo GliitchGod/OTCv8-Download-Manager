@@ -1,95 +1,115 @@
 setDefaultTab("HP")
-local macroName = 'Potion';
-local macroDelay = 100;
-local tabName = setDefaultTab('HP');
 
-UI.Separator(tabName)
+local hpPercent = 99
+macro(50, "Heal Spell",  function()
+  if (hppercent() <= hpPercent) then
+  say(storage.HealText)
+end
+end)
+addTextEdit("HealText", storage.HealText or "exura vita", function(widget, text)
+storage.HealText = text
+end)
 
-itemWidget = [[
-Panel
-  height: 34
-  margin-top: 7
-  margin-left: 25
-  margin-right: 25
 
-  UIWidget
-    id: text
-    anchors.left: parent.left
-    anchors.verticalCenter: next.verticalCenter
 
-  BotItem
-    id: item
-    anchors.top: parent.top
-    anchors.right: parent.right
-]]
 
-storage.itemValues = storage.itemValues or {};
-addItem = function(id, title, defaultItem, dest, tooltip)
-    local widget = setupUI(itemWidget, dest)
-    widget.text:setText(title)
-    widget.text:setTooltip(tooltip)
-    widget.item:setTooltip(tooltip)
-    widget.item:setItemId(storage.itemValues[id] or defaultItem)
-    widget.item.onItemChange = function(widget)
-        storage.itemValues[id] = widget:getItemId()
-    end
-    storage.itemValues[id] = storage.itemValues[id] or defaultItem
+-- START CONFIG:
+local panels = { -- HOW MANY PANELS FOR EACH TYPE OF HEALING DO YOU WANT?
+  ['Healing Items'] = {
+    ['MP'] = 1,
+    ['HP'] = 1,
+  },
+  ['Healing Spells'] = {
+    ['MP'] = 0,
+    ['HP'] = 0,
+  },
+}
+local checkInterval = 250 -- milliseconds (lowers values means higher memory consumption but faster response)
+local oldVersions = false -- true: servers that doesnt allow using items with hotkeys (items must be visible)
+
+-- END OF CONFIG, DO NOT EDIT ANYTHING BELOW, UNLESS YOU KNOW WHAT YOU ARE DOING
+-- vBot scripting services: F.Almeida at Discord.
+
+local stName = "OldHeal"
+storage[stName] = storage[stName] or {}
+local config = storage[stName]
+
+local function getPercent(HPorMP)
+  if HPorMP == "MP" then
+    return manapercent() or math.min(100, math.floor(100 * (player:getMana() / player:getMaxMana())))
+  else
+    return hppercent() or player:getHealthPercent()
+  end
 end
 
-scrollBar = [[
-Panel
-  height: 28
-  margin-top: 3
-
-  UIWidget
-    id: text
-    anchors.left: parent.left
-    anchors.right: parent.right
-    anchors.top: parent.top
-    text-align: center
-    
-  HorizontalScrollBar
-    id: scroll
-    anchors.left: parent.left
-    anchors.right: parent.right
-    anchors.top: prev.bottom
-    margin-top: 3
-    minimum: 0
-    maximum: 10
-    step: 1
-]];
-
-storage.scrollBarValues = storage.scrollBarValues or {};
-addScrollBar = function(id, title, min, max, defaultValue, dest, tooltip)
-    local value = storage.scrollBarValues[id] or defaultValue
-    local widget = setupUI(scrollBar, dest)
-    widget.text:setTooltip(tooltip)
-    widget.scroll.onValueChange = function(scroll, value)
-        widget.text:setText(title .. ": " .. value .. "%")
-        if value == 0 then
-            value = 1
+for healType, entries in pairs(panels) do
+  local healTypeLabel
+  config[healType] = config[healType] or {}
+  for HPorMP, amount in pairs(entries) do
+    if amount > 0 then
+      for i = 1, amount do
+        -- create label for heal type
+        if not healTypeLabel then
+          healTypeLabel = true
+          UI.Label(healType)
         end
-        storage.scrollBarValues[id] = value
+        -- create base storages if doesnt exists
+        config[healType][HPorMP] = config[healType][HPorMP] or {}
+        if not config[healType][HPorMP][i] or type(config[healType][HPorMP][i]) ~= 'table' then
+          config[healType][HPorMP][i] = {on=false, title=HPorMP.."%", min=51, max=90}
+          if healType == 'Healing Items' then
+            config[healType][HPorMP][i].item = 3160
+          else
+            config[healType][HPorMP][i].text = 'exura vita'
+          end
+        end
+        local healConfig = config[healType][HPorMP][i]
+        -- macros
+        local healingMacro = macro(checkInterval,function()
+          local current = getPercent(HPorMP)
+          if healConfig.min <= current and current < healConfig.max then
+            if healType == 'Healing Items' then
+              -- use item
+              local thing = g_things.getThingType(healConfig.item)
+              local subType = g_game.getClientVersion() >= 860 and 0 or 1
+              if thing and thing:isFluidContainer() then
+                subType = healConfig.subType
+              end
+              if oldVersions then
+                -- find item to use
+                local find = g_game.findPlayerItem(healConfig.item, subType)
+                if find then
+                  g_game.useWith(find, player)
+                end
+              else
+                g_game.useInventoryItemWith(healConfig.item, player, subType)
+              end
+            else
+              -- use spell
+              if TargetBot then
+                -- sync spell with targetbot if available
+                TargetBot.saySpell(healConfig.text)
+              else
+                say(healConfig.text)
+              end
+            end
+          end
+        end)
+        healingMacro.setOn(healConfig.on)
+        -- panels
+        if healType == 'Healing Items' then
+          UI.DualScrollItemPanel(healConfig, function(widget, newParams)
+            healConfig = newParams
+            healingMacro.setOn(healConfig.on and healConfig.item > 100)
+          end)
+        else
+          UI.DualScrollPanel(healConfig, function(widget, newParams)
+            healConfig = newParams
+            healingMacro.setOn(healConfig.on)
+          end)
+        end
+      end
+      UI.Separator()
     end
-    widget.scroll:setRange(min, max)
-    widget.scroll:setTooltip(tooltip)
-    widget.scroll:setValue(value)
-    widget.scroll.onValueChange(widget.scroll, value)
+  end
 end
-
-addScrollBar('potionHealth', 'Health', 1, 100, 99, tabName, 'Health percentage to use the potion.');
-addScrollBar('potionMana', 'Mana', 1, 100, 99, tabName, 'Mana percentage to use the potion.');
-addItem('potionLife', 'Potion Health', 11863, tabName, '');
-addItem('potionMana', 'Potion Mana', 11863, tabName, '');
-
-macro(100, "Potion", function()
-    local selfHealth = hppercent();
-    local selfMana = manapercent();
-    if selfHealth < storage.scrollBarValues.potionHealth then
-        useWith(storage.itemValues.potionLife, player)
-    elseif selfMana < storage.scrollBarValues.potionMana then
-        useWith(storage.itemValues.potionMana, player)
-    end
-end, tabName);
-
-UI.Separator(tabName)
