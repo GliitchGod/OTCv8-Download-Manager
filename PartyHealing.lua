@@ -1,3 +1,4 @@
+setDefaultTab("PT")
 HEALING_SPELL = "exura sio"
 THRESHOLD = 90
 macro(1, "Party Healing", function()
