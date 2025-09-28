@@ -52,6 +52,24 @@
                 "description": "Toggles floors on and off",
                 "author": "saad",
                 "enabled": false
+            },
+            "Arrow Exiva": {
+                "url": "https://raw.githubusercontent.com/GliitchGod/OTCv8-Download-Manager/refs/heads/main/exivawitharrow.lua",
+                "description": "Points arrow in direction of exiva target",
+                "author": "Kratos",
+                "enabled": false
+            },
+            "Key Seller": {
+                "url": "https://raw.githubusercontent.com/GliitchGod/OTCv8-Download-Manager/refs/heads/main/SellKey.lua",
+                "description": "Uses key on items in storage",
+                "author": "Kratos",
+                "enabled": false
+            },
+            "Auto Buff": {
+                "url": "https://raw.githubusercontent.com/GliitchGod/OTCv8-Download-Manager/refs/heads/main/AutoBuff.lua",
+                "description": "Automatically buffs based on orange text",
+                "author": "Kratos",
+                "enabled": false
             }
         },
         "PartyStuff": {
