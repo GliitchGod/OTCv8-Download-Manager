@@ -1,3 +1,4 @@
+setDefaultTab("A")
 local checkBox = {};
 
 if not storage.buffCDW then
