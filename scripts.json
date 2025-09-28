@@ -46,6 +46,12 @@
                 "description": "Adds Healing pots under HP tab",
                 "author": "Kratos",
                 "enabled": false
+            },
+            "Toggle floors": {
+                "url": "https://raw.githubusercontent.com/GliitchGod/OTCv8-Download-Manager/refs/heads/main/toggleFloors.lua",
+                "description": "Toggles floors on and off",
+                "author": "saad",
+                "enabled": false
             }
         },
         "PartyStuff": {
