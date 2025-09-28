@@ -1,3 +1,4 @@
+setDefaultTab("A")
 onPlayerPositionChange(function(pos)
     if storage.limitFloor then
         local gameMapPanel = modules.game_interface.getMapPanel()
