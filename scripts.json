@@ -70,6 +70,12 @@
                 "description": "Automatically buffs based on orange text",
                 "author": "Kratos",
                 "enabled": false
+            },
+            "Auto Follow": {
+                "url": "https://raw.githubusercontent.com/GliitchGod/OTCv8-Download-Manager/refs/heads/main/AutoFollow.lua",
+                "description": "Automatically follows the leader",
+                "author": "Kratos",
+                "enabled": false
             }
         },
         "PartyStuff": {
