@@ -12,6 +12,12 @@
                 "description": "Casts utamo on and off based of values",
                 "author": "Madicinal",
                 "enabled": false
+            },
+              "Attack Leader Targets": {
+                "url": "https://raw.githubusercontent.com/GliitchGod/OTCv8-Download-Manager/refs/heads/main/McatkLeaderTarget.lua",
+                "description": "Automatically Attacks what your leader is attacking",
+                "author": "saad",
+                "enabled": false
             }
         },
         "Utility": {
@@ -25,6 +31,12 @@
                 "url": "https://raw.githubusercontent.com/GliitchGod/OTCv8-Download-Manager/refs/heads/main/WildGrowth.lua",
                 "description": "Mark tile with f12 to auto cast wild growth",
                 "author": "Astro",
+                "enabled": false
+            },
+            "Auto Mark MW": {
+                "url": "https://raw.githubusercontent.com/GliitchGod/OTCv8-Download-Manager/refs/heads/main/markmwonposition.lua",
+                "description": "mark tiles with HOME button to trigger mw on walk positions",
+                "author": "saad",
                 "enabled": false
             }
         },
@@ -41,6 +53,12 @@
                 "url": "https://raw.githubusercontent.com/GliitchGod/OTCv8-Download-Manager/refs/heads/main/AutoParty.lua",
                 "description": "automatically sets party invite and join",
                 "author": "Lee",
+                "enabled": false
+            },
+            "Party Heal": {
+                "url": "https://raw.githubusercontent.com/GliitchGod/OTCv8-Download-Manager/refs/heads/main/PartyHealing.lua",
+                "description": "Heals party members based on 90% HP",
+                "author": "saad",
                 "enabled": false
             }
         }
